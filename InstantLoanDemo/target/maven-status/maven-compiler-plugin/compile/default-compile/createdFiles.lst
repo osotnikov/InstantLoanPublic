@@ -1,0 +1,8 @@
+osotnikov\demo\forFinance\constants\LoanReqStatus.class
+osotnikov\demo\forFinance\rest\ForFinanceHwRestController.class
+osotnikov\demo\forFinance\dao\LoanApplicationDao.class
+osotnikov\demo\forFinance\web\WelcomeController.class
+osotnikov\demo\forFinance\business\LoanApplicationBusiness.class
+osotnikov\demo\forFinance\business\LoanApplicationBusinessImpl.class
+osotnikov\demo\forFinance\dao\LoanApplicationDaoImpl.class
+osotnikov\demo\forFinance\dao\entity\LoanApplication.class

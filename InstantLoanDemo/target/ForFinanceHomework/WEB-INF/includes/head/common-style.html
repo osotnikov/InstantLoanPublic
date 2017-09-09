@@ -1,0 +1,11 @@
+<style>
+
+<%
+String commonBgColor = (String)session.getAttribute(SessionAttributeEnum.COMMON_BG_COLOR_SESSION_ATT.getName());
+%>
+
+body{
+	background-color: <%=(commonBgColor==null)?"white":commonBgColor%>
+}
+
+</style>
