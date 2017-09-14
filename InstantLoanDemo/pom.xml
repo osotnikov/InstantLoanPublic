@@ -15,7 +15,7 @@
 			4.3.5.Final
 			<!--  3.6.9.Final-->
 		</hibernate.version>
-		<junit.version>3.8.1</junit.version>
+		<junit.version>4.8.2</junit.version>
 		<jackson.version>2.5.3</jackson.version>
 		
    </properties>
