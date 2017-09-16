@@ -66,6 +66,50 @@
                  
                 return false;
             });
+            
+            $(document.forms['interestCalculatorForm']).submit(function(event){
+                /*var formData = {
+                	typeOfInterest: this.typeOfInterest,
+                    amount: this.amount.value,
+                    interest: this.interest.value,
+                    intervals: this.intervals.value
+                };*/ 
+                
+                var formData = $(this).serialize();
+                var amount = this.amount.value;
+                var interest = this.interest.value;
+                var intervals = this.intervals.value;
+                
+                var destinationUrl = this.action; // The action attribute of the loanApplicationForm form.
+                 
+                $.ajax({
+                    url: "<%=request.getContextPath() %>/rest/tools/interest_calculator",
+                    type: "GET",
+                    data: formData,
+                    cache: false,
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    dataType: "text",
+                     
+                    success: function (data){
+                    	
+                    	console.log('success');
+                        $('.interestCalculator .action-report').text('The total interest amount for a loan of: ' + 
+                          amount + ' of ' + intervals + ' intervals, is: ' + data);
+                        
+                    },
+                     
+                    error: function (jqXHR, textStatus, errorThrown){
+                    	var json = $.parseJSON(jqXHR.responseText);
+                    		
+                    	$('.interestCalculator .action-report').text('Rejection reason: ' + 
+                    		JSON.parse(jqXHR.responseText).rejectionReason);
+                         
+                    }
+                     
+                });
+                 
+                return false;
+            });
              
         });
         
@@ -102,6 +146,45 @@
               
           <div class="buttonRow">
             <input type="submit" value="Apply for Loan" />
+          </div>
+            
+        </fieldset>
+      </form> 
+      
+      <div class="action-report"> </div>
+
+    </div>
+    
+     <div class="interestCalculator">
+     
+      <form id="interestCalculatorForm" name="interestCalculatorForm" 
+      	action="javascript:void(0)" method="GET">
+      	
+        <fieldset>
+          <legend>Interest Calculator</legend>
+              
+          <div>
+            <label for="COMPOUND">Compound</label> 
+            <input type="radio" name="typeOfInterest" id="COMPOUND" value="COMPOUND" checked/>
+            <label for="SIMPLE">Simple</label> 
+            <input type="radio" name="typeOfInterest" id="SIMPLE" value="SIMPLE"/>
+          </div>
+          <div>
+            <label for="amount">Amount</label> 
+            <input type="text" id="amount" name="amount"/>
+          </div>
+          <div>
+            <label for="interest">Interest</label> 
+            <input type="text" id="interest" name="interest"/>
+          </div>
+              
+          <div>
+            <label for="intervals">Intervals</label> 
+            <input type="text" id="intervals" name="intervals"/>
+          </div>
+              
+          <div class="buttonRow">
+            <input type="submit" value="Calculate" />
           </div>
             
         </fieldset>

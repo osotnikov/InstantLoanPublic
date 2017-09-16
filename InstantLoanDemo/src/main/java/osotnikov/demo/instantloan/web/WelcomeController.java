@@ -11,7 +11,7 @@ public class WelcomeController {
  
 	@RequestMapping("/")
 	public ModelAndView welcome() {
-		System.out.println("in WelcomeController");
+		System.out.println("in LoanInterestCalculatorController");
  
 		ModelAndView mv = new ModelAndView("welcome");
 		return mv;
